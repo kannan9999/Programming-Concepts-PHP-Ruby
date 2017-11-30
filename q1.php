@@ -21,19 +21,44 @@ function printBoard($move_list){
 
 function x_move($move_list){
     if (!in_array(" ", $move_list)){
-        exit("No more valid moves left. Game ends in a tie.");
+        exit("No more valid moves left. Game ends in a tie.<br>");
     }
-    echo "Player X Turn. Choose a position on the board from 1 to 9";
+    echo "Player X Turn. Choose a position on the board from 1 to 9.<br>";
 
     if(isset($_POST['submit'])) {
         $x_input =  htmlspecialchars($_POST['textInput']);
-        while(move_list[x_input - 1] != " "){
-            if (!in_array(" ", $move_list)){
-                exit("No more valid moves left. Game ends in a tie.");
-            }
+        while($move_list[$x_input - 1] != " "){
+            echo "Invalid Move. Please enter the number of a free space on the board.<br>";
+            $x_input =  htmlspecialchars($_POST['textInput']);
         }
+        if($move_list[$x_input - 1] == " "){ //valid move
+            $move_list[$x_input -1] = "X" ;
+        }
+        printBoard($move_list);
+        //o_move($move_list);
     }
 }
+/*
+function o_move($move_list){
+    if (!in_array(" ", $move_list)){
+        exit("No more valid moves left. Game ends in a tie.<br>");
+    }
+    echo "Player O Turn. Choose a position on the board from 1 to 9.<br>";
+
+    if(isset($_POST['submit'])) {
+        $o_input =  htmlspecialchars($_POST['textInput']);
+        while($move_list[$o_input - 1] != " "){
+            echo "Invalid Move. Please enter the number of a free space on the board.<br>";
+            $o_input =  htmlspecialchars($_POST['textInput']);
+        }
+        if($move_list[$o_input - 1] == " "){ //valid move
+            $move_list[$o_input -1] = "X" ;
+        }
+        printBoard($move_list);
+        x_move($move_list);
+    }
+}
+*/
 
 printBoard($moves); //First print out the empty board
 x_move($moves); //Begin with first player's turn
