@@ -8,8 +8,8 @@ class Queens{
         }
     }
 
-    function print_board()
-    {
+    function print_board(){
+        echo "________________________\n";
         for ($r = 0; $r < 8; $r++) {
             for ($c = 0; $c < 8; $c++) {
                 if ($this->board[$r][$c] === 1) {
@@ -18,6 +18,7 @@ class Queens{
                     echo '|_|';
                 }
             }
+
             echo "\n";
         }
     }
