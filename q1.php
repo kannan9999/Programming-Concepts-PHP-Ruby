@@ -1,5 +1,10 @@
 <?php
-$moves = array(" "," "," "," "," "," "," "," "," ");
+#CSI3130 - Assignment4 - Part1
+#Question 1: Tic-Tac-Toe in PHP
+
+$moves = array(" "," "," "," "," "," "," "," "," "); //Array which will store moves in empty to start the game
+
+//Function to display the board
 function printBoard($move_list){
     for ($i = 0; $i <= 8; $i++) {
         echo("|");
@@ -9,6 +14,7 @@ function printBoard($move_list){
         }
     }
 }
+//Function for player x's turn
 function x_move($move_list){
     if (!in_array(" ", $move_list)){
         exit("No more valid moves left. Game ends in a tie.\n");
@@ -30,6 +36,7 @@ function x_move($move_list){
     check_x_winner($move_list);
     o_move($move_list);
 }
+//Function for player o's turn
 function o_move($move_list){
     if (!in_array(" ", $move_list)){
         exit("No more valid moves left. Game ends in a tie.\n");
@@ -51,6 +58,7 @@ function o_move($move_list){
     check_o_winner($move_list);
     x_move($move_list);
 }
+#Check if player x has met a winning condition
 function check_x_winner($move_list){
     //Check horizontal winning conditions
     if($move_list[0] == "X" && $move_list[1] == "X" && $move_list[2] == "X"){
@@ -80,6 +88,7 @@ function check_x_winner($move_list){
         exit("Game over. Player X is the winner!\n");
     }
 }
+//Check if player o has met a winning condition
 function check_o_winner($move_list){
     //Check horizontal winning conditions
     if($move_list[0] == "O" && $move_list[1] == "O" && $move_list[2] == "O"){
